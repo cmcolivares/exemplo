@@ -1,0 +1,320 @@
+\doxysection{portao\+\_\+\+PAP\+\_\+versao\+\_\+simples\+\_\+v4.\+ino File Reference}
+\hypertarget{portao___p_a_p__versao__simples__v4_8ino}{}\label{portao___p_a_p__versao__simples__v4_8ino}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+
+
+Controle de portões.  
+
+
+{\ttfamily \#include $<$Servo.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_aa2fa747fdde1bb91312ecaa840dfa18a}{DEBUG\+\_\+\+BEGIN}}(data)
+\begin{DoxyCompactList}\small\item\em Inicia a comunicação serial para depuração. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_ab787e56d141dd324fd68e01e31ca93fe}{DEBUG}}(data)
+\begin{DoxyCompactList}\small\item\em Imprime dados na comunicação serial para depuração. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a0da6f1f956bb529d09b8810894056127}{DEBUGLN}}(data)
+\begin{DoxyCompactList}\small\item\em Imprime dados e pula linha na comunicação serial para depuração. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a22515020e3a35a44154c2746fe4ecb34}{MOTOR\+\_\+1}}~5
+\begin{DoxyCompactList}\small\item\em Pino do motor 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_afeb61856f0eaca0069683f263efc35f7}{MOTOR\+\_\+2}}~6
+\begin{DoxyCompactList}\small\item\em Pino do motor 2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_af8bfae90c5d6853fcfb487e05b9f50c8}{FLAG}}~4
+\begin{DoxyCompactList}\small\item\em Pino da flag. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a0e70dc0c86732dbec5ed78a47da6c2b8}{OPENED}}~8
+\begin{DoxyCompactList}\small\item\em Pino para indicar portão aberto. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_adacee581176b7076b7baf0f72d81460f}{TRIGGER\+\_\+\+PIN}}~7
+\begin{DoxyCompactList}\small\item\em Pino de disparo. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_aec69416ed1a0f4fc6d3e6307e8686325}{HOLD\+\_\+\+TIME\+\_\+\+MOVES}}~100
+\begin{DoxyCompactList}\small\item\em Tempo de espera durante movimento. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a37ca426176cef066944dade0fab7f93d}{HOLD\+\_\+\+TIME\+\_\+\+LOOP}}~100
+\begin{DoxyCompactList}\small\item\em Tempo de espera no loop. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_ac5cde085ab6765799cdaf21342d2bb7c}{STEP\+\_\+\+FOR}}~3
+\begin{DoxyCompactList}\small\item\em Passo para o movimento dos servos. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_af3c82099d63a2d91d68bd62d954059c7}{MAX\+\_\+\+ANGLE}}~100
+\begin{DoxyCompactList}\small\item\em Ângulo máximo dos servos. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a84800117a9869cbf8156bded52b62b79}{CLOSE\+\_\+\+POS\+\_\+\+M1}}~0
+\begin{DoxyCompactList}\small\item\em Posição de fechamento do motor 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a172a5ede90ec74431fe9d69e40f17806}{CLOSE\+\_\+\+POS\+\_\+\+M2}}~180
+\begin{DoxyCompactList}\small\item\em Posição de fechamento do motor 2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_ab4fe1e88aae60d054d11dc825fe9dc2b}{SPEED\+\_\+\+DATA}}~115200
+\begin{DoxyCompactList}\small\item\em Velocidade de dados para depuração. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a914e4c788f054aa8aaf991aa5a5804da}{print\+Debug}} ()
+\begin{DoxyCompactList}\small\item\em Imprime a posição dos motores para depuração. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a9e8555112049fc2b4945120b3c45f8ab}{open}} ()
+\begin{DoxyCompactList}\small\item\em Abre ambos os portões. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a5ae591df94fc66ccb85cbb6565368bca}{close}} ()
+\begin{DoxyCompactList}\small\item\em Fecha ambos os portões. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a13a43e6d814de94978c515cb084873b1}{run}} ()
+\begin{DoxyCompactList}\small\item\em Função de controle dos portões. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa os parâmetros essenciais do programa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Função principal -\/ LOOP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Servo \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_a3e72e15725c9a03eca2ca26e4a236839}{motor\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Instancia dois motores servo. \end{DoxyCompactList}\item 
+Servo \mbox{\hyperlink{portao___p_a_p__versao__simples__v4_8ino_ab60a33be45d2f8580b8adf6c9c8074ef}{motor\+\_\+2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controle de portões. 
+
+Este código foi criado para controlar a abertura de dois portões miniatura como parte do PAP para 12 alunos do TMI, em 2024.
+
+Criado em maio de 2024 por Olivares, revisado por Sarg. Freitas. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a84800117a9869cbf8156bded52b62b79}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!CLOSE\_POS\_M1@{CLOSE\_POS\_M1}}
+\index{CLOSE\_POS\_M1@{CLOSE\_POS\_M1}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{CLOSE\_POS\_M1}{CLOSE\_POS\_M1}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a84800117a9869cbf8156bded52b62b79} 
+\#define CLOSE\+\_\+\+POS\+\_\+\+M1~0}
+
+
+
+Posição de fechamento do motor 1. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a172a5ede90ec74431fe9d69e40f17806}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!CLOSE\_POS\_M2@{CLOSE\_POS\_M2}}
+\index{CLOSE\_POS\_M2@{CLOSE\_POS\_M2}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{CLOSE\_POS\_M2}{CLOSE\_POS\_M2}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a172a5ede90ec74431fe9d69e40f17806} 
+\#define CLOSE\+\_\+\+POS\+\_\+\+M2~180}
+
+
+
+Posição de fechamento do motor 2. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_ab787e56d141dd324fd68e01e31ca93fe}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!DEBUG@{DEBUG}}
+\index{DEBUG@{DEBUG}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{DEBUG}{DEBUG}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_ab787e56d141dd324fd68e01e31ca93fe} 
+\#define DEBUG(\begin{DoxyParamCaption}\item[{}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Imprime dados na comunicação serial para depuração. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dados a serem impressos. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_aa2fa747fdde1bb91312ecaa840dfa18a}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!DEBUG\_BEGIN@{DEBUG\_BEGIN}}
+\index{DEBUG\_BEGIN@{DEBUG\_BEGIN}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_BEGIN}{DEBUG\_BEGIN}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_aa2fa747fdde1bb91312ecaa840dfa18a} 
+\#define DEBUG\+\_\+\+BEGIN(\begin{DoxyParamCaption}\item[{}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Inicia a comunicação serial para depuração. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Taxa de baud para comunicação serial. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a0da6f1f956bb529d09b8810894056127}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!DEBUGLN@{DEBUGLN}}
+\index{DEBUGLN@{DEBUGLN}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{DEBUGLN}{DEBUGLN}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a0da6f1f956bb529d09b8810894056127} 
+\#define DEBUGLN(\begin{DoxyParamCaption}\item[{}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Imprime dados e pula linha na comunicação serial para depuração. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Dados a serem impressos. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_af8bfae90c5d6853fcfb487e05b9f50c8}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!FLAG@{FLAG}}
+\index{FLAG@{FLAG}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{FLAG}{FLAG}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_af8bfae90c5d6853fcfb487e05b9f50c8} 
+\#define FLAG~4}
+
+
+
+Pino da flag. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a37ca426176cef066944dade0fab7f93d}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!HOLD\_TIME\_LOOP@{HOLD\_TIME\_LOOP}}
+\index{HOLD\_TIME\_LOOP@{HOLD\_TIME\_LOOP}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{HOLD\_TIME\_LOOP}{HOLD\_TIME\_LOOP}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a37ca426176cef066944dade0fab7f93d} 
+\#define HOLD\+\_\+\+TIME\+\_\+\+LOOP~100}
+
+
+
+Tempo de espera no loop. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_aec69416ed1a0f4fc6d3e6307e8686325}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!HOLD\_TIME\_MOVES@{HOLD\_TIME\_MOVES}}
+\index{HOLD\_TIME\_MOVES@{HOLD\_TIME\_MOVES}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{HOLD\_TIME\_MOVES}{HOLD\_TIME\_MOVES}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_aec69416ed1a0f4fc6d3e6307e8686325} 
+\#define HOLD\+\_\+\+TIME\+\_\+\+MOVES~100}
+
+
+
+Tempo de espera durante movimento. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_af3c82099d63a2d91d68bd62d954059c7}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!MAX\_ANGLE@{MAX\_ANGLE}}
+\index{MAX\_ANGLE@{MAX\_ANGLE}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{MAX\_ANGLE}{MAX\_ANGLE}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_af3c82099d63a2d91d68bd62d954059c7} 
+\#define MAX\+\_\+\+ANGLE~100}
+
+
+
+Ângulo máximo dos servos. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a22515020e3a35a44154c2746fe4ecb34}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!MOTOR\_1@{MOTOR\_1}}
+\index{MOTOR\_1@{MOTOR\_1}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{MOTOR\_1}{MOTOR\_1}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a22515020e3a35a44154c2746fe4ecb34} 
+\#define MOTOR\+\_\+1~5}
+
+
+
+Pino do motor 1. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_afeb61856f0eaca0069683f263efc35f7}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!MOTOR\_2@{MOTOR\_2}}
+\index{MOTOR\_2@{MOTOR\_2}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{MOTOR\_2}{MOTOR\_2}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_afeb61856f0eaca0069683f263efc35f7} 
+\#define MOTOR\+\_\+2~6}
+
+
+
+Pino do motor 2. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a0e70dc0c86732dbec5ed78a47da6c2b8}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!OPENED@{OPENED}}
+\index{OPENED@{OPENED}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{OPENED}{OPENED}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a0e70dc0c86732dbec5ed78a47da6c2b8} 
+\#define OPENED~8}
+
+
+
+Pino para indicar portão aberto. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_ab4fe1e88aae60d054d11dc825fe9dc2b}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!SPEED\_DATA@{SPEED\_DATA}}
+\index{SPEED\_DATA@{SPEED\_DATA}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{SPEED\_DATA}{SPEED\_DATA}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_ab4fe1e88aae60d054d11dc825fe9dc2b} 
+\#define SPEED\+\_\+\+DATA~115200}
+
+
+
+Velocidade de dados para depuração. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_ac5cde085ab6765799cdaf21342d2bb7c}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!STEP\_FOR@{STEP\_FOR}}
+\index{STEP\_FOR@{STEP\_FOR}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{STEP\_FOR}{STEP\_FOR}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_ac5cde085ab6765799cdaf21342d2bb7c} 
+\#define STEP\+\_\+\+FOR~3}
+
+
+
+Passo para o movimento dos servos. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_adacee581176b7076b7baf0f72d81460f}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!TRIGGER\_PIN@{TRIGGER\_PIN}}
+\index{TRIGGER\_PIN@{TRIGGER\_PIN}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{TRIGGER\_PIN}{TRIGGER\_PIN}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_adacee581176b7076b7baf0f72d81460f} 
+\#define TRIGGER\+\_\+\+PIN~7}
+
+
+
+Pino de disparo. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a5ae591df94fc66ccb85cbb6565368bca}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!close@{close}}
+\index{close@{close}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a5ae591df94fc66ccb85cbb6565368bca} 
+void close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Fecha ambos os portões. 
+
+Esta função move os motores para fechar ambos os portões. A posição dos motores é atualizada gradualmente até a posição de fechamento. \Hypertarget{portao___p_a_p__versao__simples__v4_8ino_afe461d27b9c48d5921c00d521181f12f}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!loop@{loop}}
+\index{loop@{loop}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Função principal -\/ LOOP. 
+
+Esta função é executada continuamente e chama a função {\ttfamily \doxylink{portao___p_a_p__versao__simples__v4_8ino_a13a43e6d814de94978c515cb084873b1}{run()}} para verificar e processar ordens externas. \Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a9e8555112049fc2b4945120b3c45f8ab}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!open@{open}}
+\index{open@{open}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a9e8555112049fc2b4945120b3c45f8ab} 
+void open (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Abre ambos os portões. 
+
+Esta função move os motores para abrir ambos os portões. A posição dos motores é atualizada gradualmente até o ângulo máximo. \Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a914e4c788f054aa8aaf991aa5a5804da}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!printDebug@{printDebug}}
+\index{printDebug@{printDebug}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{printDebug()}{printDebug()}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a914e4c788f054aa8aaf991aa5a5804da} 
+void print\+Debug (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Imprime a posição dos motores para depuração. 
+
+Esta função imprime o estado atual dos motores e se o portão está aberto, fechado ou encravado. \Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a13a43e6d814de94978c515cb084873b1}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!run@{run}}
+\index{run@{run}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a13a43e6d814de94978c515cb084873b1} 
+void run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Função de controle dos portões. 
+
+Esta função verifica se há uma ordem externa e aciona a abertura ou fechamento dos portões com base na posição atual dos motores. \Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!setup@{setup}}
+\index{setup@{setup}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa os parâmetros essenciais do programa. 
+
+Esta função configura os pinos, inicializa os motores e define o estado inicial dos portões. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_a3e72e15725c9a03eca2ca26e4a236839}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!motor\_1@{motor\_1}}
+\index{motor\_1@{motor\_1}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{motor\_1}{motor\_1}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_a3e72e15725c9a03eca2ca26e4a236839} 
+Servo motor\+\_\+1}
+
+
+
+Instancia dois motores servo. 
+
+\Hypertarget{portao___p_a_p__versao__simples__v4_8ino_ab60a33be45d2f8580b8adf6c9c8074ef}\index{portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}!motor\_2@{motor\_2}}
+\index{motor\_2@{motor\_2}!portao\_PAP\_versao\_simples\_v4.ino@{portao\_PAP\_versao\_simples\_v4.ino}}
+\doxysubsubsection{\texorpdfstring{motor\_2}{motor\_2}}
+{\footnotesize\ttfamily \label{portao___p_a_p__versao__simples__v4_8ino_ab60a33be45d2f8580b8adf6c9c8074ef} 
+Servo motor\+\_\+2}
+
